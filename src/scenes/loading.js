@@ -9,22 +9,17 @@ Crafty.scene('Loading',
 
         displayLoadingMessage();
         // Load our sprite map image
-        Crafty.load(['assets/16x16_forest_1.gif'], function() {
-            // Once the image is loaded...
+        Crafty.load(['assets/16x16_forest_1.gif', 'assets/hunter.png'],
+            function() {
+                Crafty.sprite(16, 'assets/16x16_forest_1.gif', {
+                    spr_tree: [0, 0],
+                    spr_bush: [1, 0],
+                    spr_village: [0, 1],
+                });
+                Crafty.sprite(16, 'assets/hunter.png', {
+                    spr_player: [0, 2],
+                }, 0, 2);
 
-            // Define the individual sprites in the image
-            // Each one (spr_tree, etc.) becomes a component
-            // These components' names are prefixed with "spr_"
-            //  to remind us that they simply cause the entity
-            //  to be drawn with a certain sprite
-            Crafty.sprite(16, 'assets/16x16_forest_1.gif', {
-                spr_tree: [0, 0],
-                spr_bush: [1, 0],
-                spr_village: [0, 1],
-                spr_player: [1, 1]
+                Crafty.scene('Game');
             });
-
-            // Now that our sprites are ready to draw, start the game
-            Crafty.scene('Game');
-        });
     });
