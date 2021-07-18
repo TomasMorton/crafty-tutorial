@@ -1,9 +1,3 @@
-const colours = {
-    background: 'rgb(249, 223, 125)',
-    bush: 'rgb(20, 185, 40)',
-    tree: 'rgb(20, 125, 40)',
-};
-
 Game = {
     // This defines our grid's size and the size of each of its tiles
     map: {
@@ -34,24 +28,8 @@ Game = {
             y === Game.map.height - 1;
     },
 
-    addToTile: function(x, y, colour) {
-        Crafty.e('2D, Canvas, Color')
-            .attr({
-                x: x * Game.map.tile.width,
-                y: y * Game.map.tile.height,
-                w: Game.map.tile.width,
-                h: Game.map.tile.height
-            })
-            .color(colour);
-    },
-
-    addTree: function(x, y) {
-        this.addToTile(x, y, colours.tree);
-    },
-
-    addBush: function(x, y) {
-        this.addToTile(x, y, colours.bush);
-    },
+    addTree: (x, y) => Crafty.e('Tree').at(x, y),
+    addBush: (x, y) => Crafty.e('Bush').at(x, y),
 
     populateTiles: function() {
         for (let x = 0; x < this.map.width; x++) {
@@ -59,7 +37,9 @@ Game = {
                 if (this.isEdgeOfMap(x, y)) {
                     this.addTree(x, y);
                 } else {
-                    this.addBush(x, y);
+                    if (Math.random() < random.bushFrequency) {
+                        this.addBush(x, y);
+                    }
                 }
             }
         }
