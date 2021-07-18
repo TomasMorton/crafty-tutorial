@@ -19,6 +19,8 @@ Game = {
     start: function() {
         Crafty.init(Game.width(), Game.height());
         Crafty.background(colours.background);
-        Crafty.scene('Game');
+        Crafty.scene('Loading');
     }
 };
+
+$text_css = { 'font-size': '24px', 'font-family': 'Arial', 'color': 'white', 'text-align': 'center' };

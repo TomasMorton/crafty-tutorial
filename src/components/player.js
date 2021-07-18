@@ -1,8 +1,7 @@
 Crafty.c('Player', {
     init: function() {
-        this.requires('Actor, Fourway, Color, Collision')
+        this.requires('Actor, Fourway, Collision, spr_player')
             .fourway(4)
-            .color(colours.player)
             .stopOnSolids()
             .onHit('Village', this.visitVillage);
 
