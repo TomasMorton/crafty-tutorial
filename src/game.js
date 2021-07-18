@@ -26,6 +26,6 @@ Game = {
 $text_css = {
     'font-size': '24px',
     'font-family': 'Arial',
-    'color': 'white',
+    'color': 'red',
     'text-align': 'center'
 };

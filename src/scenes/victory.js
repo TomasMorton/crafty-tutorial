@@ -1,8 +1,9 @@
 Crafty.scene('Victory',
     function() {
         Crafty.e('2D, DOM, Text')
-            .attr({ x: 0, y: 0 })
-            .text('Victory!');
+            .text('All villages visited!')
+            .attr({ x: 0, y: Game.height() / 2 - 24, w: Game.width() })
+            .textFont($text_css);
 
         Crafty.audio.play('applause');
 
@@ -10,13 +11,13 @@ Crafty.scene('Victory',
         setTimeout(function() {
             delay = false;
         }, 5000);
-        this.restart_game = Crafty.bind('KeyDown', function() {
+        this.restart_game = function() {
             if (!delay) {
                 Crafty.scene('Game');
             }
-        });
-    },
-    function() {
+        };
+        Crafty.bind('KeyDown', this.restart_game);
+    }, function() {
         // Remove our event binding from above so that we don't
         //  end up having multiple redundant event watchers after
         //  multiple restarts of the game
