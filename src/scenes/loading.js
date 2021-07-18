@@ -1,16 +1,19 @@
-const assets = [
+const images = [
     'assets/16x16_forest_2.gif',
     'assets/hunter.png',
-    'assets/door_knock_3x.mp3',
-    'assets/door_knock_3x.ogg',
-    'assets/door_knock_3x.aac',
-    'assets/board_room_applause.mp3',
-    'assets/board_room_applause.ogg',
-    'assets/board_room_applause.aac',
-    'assets/candy_dish_lid.mp3',
-    'assets/candy_dish_lid.ogg',
-    'assets/candy_dish_lid.aac'
 ];
+const audio = {
+    knock: ['assets/door_knock_3x.mp3',
+        'assets/door_knock_3x.ogg',
+        'assets/door_knock_3x.aac'],
+    applause: ['assets/board_room_applause.mp3',
+        'assets/board_room_applause.ogg',
+        'assets/board_room_applause.aac'],
+    ring: ['assets/candy_dish_lid.mp3',
+        'assets/candy_dish_lid.ogg',
+        'assets/candy_dish_lid.aac']
+
+};
 
 Crafty.scene('Loading',
     function() {
@@ -33,25 +36,10 @@ Crafty.scene('Loading',
             }, 0, 2);
         };
 
-        const addAudio = function() {
-            Crafty.audio.add({
-                knock: ['assets/door_knock_3x.mp3',
-                    'assets/door_knock_3x.ogg',
-                    'assets/door_knock_3x.aac'],
-                applause: ['assets/board_room_applause.mp3',
-                    'assets/board_room_applause.ogg',
-                    'assets/board_room_applause.aac'],
-                ring: ['assets/candy_dish_lid.mp3',
-                    'assets/candy_dish_lid.ogg',
-                    'assets/candy_dish_lid.aac']
-            });
-        };
-
         displayLoadingMessage();
-        Crafty.load(assets,
+        Crafty.load({ images, audio },
             function() {
                 addSprites();
-                addAudio();
                 Crafty.scene('Game');
             });
     });
