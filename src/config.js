@@ -11,7 +11,3 @@ const colours = Object.freeze({
 const objectives = Object.freeze({
     maxVillages: 5
 });
-
-const animation = Object.freeze({
-    playerSpeed: 4
-})
