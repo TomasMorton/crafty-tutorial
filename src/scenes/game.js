@@ -1,8 +1,5 @@
 Crafty.scene('Game',
     function() {
-        const addTree = function(x, y) {
-            Crafty.e('Tree').at(x, y);
-        };
 
         const addBush = function(x, y) {
             Crafty.e('Bush').at(x, y);
@@ -10,6 +7,14 @@ Crafty.scene('Game',
 
         const addPlayer = function() {
             Crafty.e('Player').at(5, 5);
+        };
+
+        const addRock = function(x, y) {
+            Crafty.e('Rock').at(x, y);
+        };
+
+        const addTree = function(x, y) {
+            Crafty.e('Tree').at(x, y);
         };
 
         const addVillage = function(x, y) {
@@ -25,6 +30,9 @@ Crafty.scene('Game',
                     break;
                 case objects.player:
                     addPlayer(x, y);
+                    break;
+                case objects.rock:
+                    addRock(x, y);
                     break;
                 case objects.tree:
                     addTree(x, y);
@@ -48,6 +56,7 @@ Crafty.scene('Game',
 
         const map = generateMap(Game.map.width, Game.map.height);
         renderMap(map);
+        Crafty.audio.play('ring');
 
         this.show_victory = this.bind('VillageVisited', function() {
             if (Crafty('Village').length === 0) {

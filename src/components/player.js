@@ -31,16 +31,15 @@ Crafty.c('Player', {
             .animate('PlayerMovingDown', 0, 2, 2)
             .animate('PlayerMovingLeft', 0, 3, 2);
 
-        const animation_speed = 8;
         this.bind('NewDirection', function(data) {
             if (data.x > 0) {
-                this.animate('PlayerMovingRight', animation_speed, -1);
+                this.animate('PlayerMovingRight', animation.playerSpeed, -1);
             } else if (data.x < 0) {
-                this.animate('PlayerMovingLeft', animation_speed, -1);
+                this.animate('PlayerMovingLeft', animation.playerSpeed, -1);
             } else if (data.y > 0) {
-                this.animate('PlayerMovingDown', animation_speed, -1);
+                this.animate('PlayerMovingDown', animation.playerSpeed, -1);
             } else if (data.y < 0) {
-                this.animate('PlayerMovingUp', animation_speed, -1);
+                this.animate('PlayerMovingUp', animation.playerSpeed, -1);
             } else {
                 this.stop();
             }

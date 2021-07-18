@@ -2,6 +2,7 @@ const objects = Object.freeze({
     empty: '_',
     bush: 'B',
     player: 'P',
+    rock: 'R',
     tree: 'T',
     village: 'V',
 });
@@ -42,7 +43,8 @@ const addObstacles = function(map) {
                 addToMap(map, x, y, objects.tree);
             } else {
                 if (Math.random() < random.bushFrequency) {
-                    addToMap(map, x, y, objects.bush);
+                    const bushOrRock = (Math.random() > random.replaceBushWithRockFrequency) ? objects.bush : objects.rock;
+                    addToMap(map, x, y, bushOrRock);
                 }
             }
         }
