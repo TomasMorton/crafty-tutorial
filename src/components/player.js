@@ -3,7 +3,9 @@ Crafty.c('Player', {
         this.requires('Actor, Fourway, Color, Collision')
             .fourway(4)
             .color(colours.player)
-            .stopOnSolids();
+            .stopOnSolids()
+            .onHit('Village', this.visitVillage);
+
     },
 
     stopOnSolids: function() {
@@ -17,5 +19,10 @@ Crafty.c('Player', {
             this.x -= this._movement.x;
             this.y -= this._movement.y;
         }
+    },
+
+    visitVillage: function(data) {
+        const village = data[0].obj;
+        village.collect();
     }
 });

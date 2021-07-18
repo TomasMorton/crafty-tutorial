@@ -31,7 +31,11 @@ Game = {
         Crafty.e('Bush').at(x, y);
     },
 
-    populateMap: function() {
+    addVillage: function(x, y) {
+        Crafty.e('Village').at(x, y);
+    },
+
+    addObstacles: function() {
         for (let x = 0; x < this.map.width; x++) {
             for (let y = 0; y < this.map.height; y++) {
                 if (this.isEdgeOfMap(x, y)) {
@@ -39,6 +43,20 @@ Game = {
                 } else {
                     if (Math.random() < random.bushFrequency) {
                         this.addBush(x, y);
+                    }
+                }
+            }
+        }
+    },
+
+    addVillages: function() {
+        for (let x = 0; x < this.map.width; x++) {
+            for (let y = 0; y < this.map.height; y++) {
+                if (Math.random() < random.villageFrequency) {
+                    this.addVillage(x, y);
+
+                    if (Crafty('Village').length >= objectives.maxVillages) {
+                        return;
                     }
                 }
             }
@@ -53,7 +71,8 @@ Game = {
         Crafty.init(Game.width(), Game.height());
         Crafty.background(colours.background);
 
-        Game.populateMap();
+        Game.addObstacles();
+        Game.addVillages();
         Game.addPlayer();
     }
 };

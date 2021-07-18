@@ -1,5 +1,6 @@
 const random = Object.freeze({
-    bushFrequency: 0.06
+    bushFrequency: 0.06,
+    villageFrequency: 0.02
 });
 
 const colours = Object.freeze({
@@ -7,4 +8,9 @@ const colours = Object.freeze({
     bush: 'rgb(20, 185, 40)',
     player: 'rgb(20, 75, 40)',
     tree: 'rgb(20, 125, 40)',
+    village: 'rgb(170, 125, 40)'
+});
+
+const objectives = Object.freeze({
+    maxVillages: 5
 });
